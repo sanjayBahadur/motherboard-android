@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Motherboard</string>
+    <string name="accessibility_service_description">Motherboard uses Android Accessibility permission to detect when YouTube Shorts is open, count Shorts scrolls, and show a cooldown overlay when your limit is reached.\n\nMotherboard does not read messages, store screen text, take screenshots, or send data anywhere.</string>
 </resources>

@@ -28,16 +28,18 @@ class PhaseZeroContractTest {
     }
 
     @Test
-    fun `manifest has no INTERNET permission`() {
+    fun `manifest has no INTERNET permission and service is declared`() {
         val manifest = File("src/main/AndroidManifest.xml").readText()
         assertFalse("INTERNET permission must not be requested", manifest.contains("android.permission.INTERNET"))
+        assertTrue("MotherboardAccessibilityService must be declared in Phase 1", manifest.contains("MotherboardAccessibilityService"))
     }
 
     @Test
-    fun `manifest has no AccessibilityService declaration`() {
+    fun `manifest now declares AccessibilityService for Phase 1`() {
         val manifest = File("src/main/AndroidManifest.xml").readText()
-        assertFalse("AccessibilityService must not be declared in Phase 0", manifest.contains("AccessibilityService"))
-        assertFalse("isAccessibilityTool must not be declared", manifest.contains("isAccessibilityTool"))
+        assertTrue("AccessibilityService must be declared in Phase 1", manifest.contains("MotherboardAccessibilityService"))
+        assertTrue("BIND_ACCESSIBILITY_SERVICE permission required", manifest.contains("BIND_ACCESSIBILITY_SERVICE"))
+        assertTrue("accessibility_service_config must be referenced", manifest.contains("accessibility_service_config"))
     }
 
     @Test

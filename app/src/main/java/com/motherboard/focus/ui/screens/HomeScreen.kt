@@ -21,9 +21,11 @@ import com.motherboard.focus.storage.InterventionSettings
 @Composable
 fun HomeScreen(
     settings: InterventionSettings,
+    isServiceEnabled: Boolean,
     onToggleBlocking: (Boolean) -> Unit,
     onSessionLimitChange: (Int) -> Unit,
     onCooldownMinutesChange: (Int) -> Unit,
+    onToggleDebugLogging: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -100,17 +102,50 @@ fun HomeScreen(
                     cooldownMillis = settings.cooldownDurationMillis,
                     onValueChangeFinished = onCooldownMinutesChange,
                 )
+                Spacer(modifier = Modifier.height(12.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Column {
+                        Text("Debug logging", style = MaterialTheme.typography.bodyMedium)
+                        Text(
+                            if (settings.debugLogging) "Logging accessibility events" else "No event logging",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                    Switch(
+                        checked = settings.debugLogging,
+                        onCheckedChange = onToggleDebugLogging,
+                    )
+                }
             }
         }
 
         val context = LocalContext.current
         ExpandableSection(title = "Permissions", initiallyExpanded = false) {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text(
-                    "Accessibility: Not enabled",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.error,
-                )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(
+                        "Accessibility",
+                        style = MaterialTheme.typography.bodyMedium,
+                    )
+                    Text(
+                        if (isServiceEnabled) "Enabled" else "Not enabled",
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = if (isServiceEnabled)
+                            MaterialTheme.colorScheme.primary
+                        else
+                            MaterialTheme.colorScheme.error,
+                    )
+                }
                 Button(onClick = {
                     context.startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
                 }) {

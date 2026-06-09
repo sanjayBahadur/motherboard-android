@@ -12,13 +12,16 @@ import com.motherboard.focus.ui.screens.HomeScreen
 @Composable
 fun MotherboardApp(viewModel: DashboardViewModel) {
     val settings by viewModel.settings.collectAsState()
+    val isServiceEnabled by viewModel.isAccessibilityServiceEnabled.collectAsState()
 
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         HomeScreen(
             settings = settings,
+            isServiceEnabled = isServiceEnabled,
             onToggleBlocking = viewModel::setBlockingEnabled,
             onSessionLimitChange = viewModel::setSessionLimit,
             onCooldownMinutesChange = viewModel::setCooldownMinutes,
+            onToggleDebugLogging = viewModel::setDebugLogging,
             modifier = Modifier.padding(innerPadding),
         )
     }

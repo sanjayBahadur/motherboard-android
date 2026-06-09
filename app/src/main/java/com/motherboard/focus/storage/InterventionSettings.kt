@@ -9,4 +9,5 @@ data class InterventionSettings(
     val blockingEnabled: Boolean = true,
     val shortsBlockedToday: Int = 0,
     val cooldownsTriggeredToday: Int = 0,
+    val debugLogging: Boolean = false,
 )
