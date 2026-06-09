@@ -1,0 +1,83 @@
+{
+  "schema_version": 2,
+  "active_work_id": "phase-0-2c75408c",
+  "works": {
+    "phase-0-50345278": {
+      "work_id": "phase-0-50345278",
+      "active_plan": "/home/tatakae/Projects/Motherboard/.omo/plans/phase-0.md",
+      "plan_name": "phase-0",
+      "status": "active",
+      "started_at": "2026-06-09T09:56:37.395Z",
+      "updated_at": "2026-06-09T09:56:37.395Z",
+      "session_ids": [
+        "opencode:ses_1544bf820ffek0qPEnGFqjV3XN"
+      ],
+      "session_origins": {
+        "opencode:ses_1544bf820ffek0qPEnGFqjV3XN": "direct"
+      },
+      "agent": "atlas",
+      "task_sessions": {}
+    },
+    "phase-0-4464fdcc": {
+      "work_id": "phase-0-4464fdcc",
+      "active_plan": "/home/tatakae/Projects/Motherboard/.omo/plans/phase-0.md",
+      "plan_name": "phase-0",
+      "status": "active",
+      "started_at": "2026-06-09T09:56:37.406Z",
+      "updated_at": "2026-06-09T09:56:37.406Z",
+      "session_ids": [
+        "opencode:ses_1544bf820ffek0qPEnGFqjV3XN"
+      ],
+      "session_origins": {
+        "opencode:ses_1544bf820ffek0qPEnGFqjV3XN": "direct"
+      },
+      "agent": "atlas",
+      "task_sessions": {}
+    },
+    "phase-0-7b7a442b": {
+      "work_id": "phase-0-7b7a442b",
+      "active_plan": "/home/tatakae/Projects/Motherboard/.omo/plans/phase-0.md",
+      "plan_name": "phase-0",
+      "status": "active",
+      "started_at": "2026-06-09T10:19:11.331Z",
+      "updated_at": "2026-06-09T10:19:11.331Z",
+      "session_ids": [
+        "opencode:ses_1544bf820ffek0qPEnGFqjV3XN"
+      ],
+      "session_origins": {
+        "opencode:ses_1544bf820ffek0qPEnGFqjV3XN": "direct"
+      },
+      "agent": "atlas",
+      "task_sessions": {}
+    },
+    "phase-0-2c75408c": {
+      "work_id": "phase-0-2c75408c",
+      "active_plan": "/home/tatakae/Projects/Motherboard/.omo/plans/phase-0.md",
+      "plan_name": "phase-0",
+      "status": "active",
+      "started_at": "2026-06-09T10:19:11.337Z",
+      "updated_at": "2026-06-09T10:19:11.337Z",
+      "session_ids": [
+        "opencode:ses_1544bf820ffek0qPEnGFqjV3XN"
+      ],
+      "session_origins": {
+        "opencode:ses_1544bf820ffek0qPEnGFqjV3XN": "direct"
+      },
+      "agent": "atlas",
+      "task_sessions": {}
+    }
+  },
+  "active_plan": "/home/tatakae/Projects/Motherboard/.omo/plans/phase-0.md",
+  "started_at": "2026-06-09T10:19:11.337Z",
+  "status": "active",
+  "updated_at": "2026-06-09T10:19:11.337Z",
+  "session_ids": [
+    "opencode:ses_1544bf820ffek0qPEnGFqjV3XN"
+  ],
+  "session_origins": {
+    "opencode:ses_1544bf820ffek0qPEnGFqjV3XN": "direct"
+  },
+  "plan_name": "phase-0",
+  "task_sessions": {},
+  "agent": "atlas"
+}
