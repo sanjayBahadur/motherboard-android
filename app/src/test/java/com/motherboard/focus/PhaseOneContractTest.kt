@@ -48,13 +48,13 @@ class PhaseOneContractTest {
     }
 
     @Test
-    fun `accessibility service config XML exists`() {
+    fun `accessibility service config XML exists (Phase 3)`() {
         val config = File("src/main/res/xml/accessibility_service_config.xml")
         assertTrue("accessibility_service_config.xml must exist", config.exists())
         val content = config.readText()
         assertTrue("must include typeWindowStateChanged", content.contains("typeWindowStateChanged"))
         assertTrue("must include typeWindowContentChanged", content.contains("typeWindowContentChanged"))
-        assertFalse("must NOT include typeViewScrolled", content.contains("typeViewScrolled"))
+        assertTrue("typeViewScrolled must be present in Phase 3", content.contains("typeViewScrolled"))
         assertTrue("canRetrieveWindowContent must be true in Phase 2", content.contains("canRetrieveWindowContent=\"true\""))
         assertFalse("packageNames must be removed in Phase 2 for NotYouTube transitions",
             content.contains("packageNames"))

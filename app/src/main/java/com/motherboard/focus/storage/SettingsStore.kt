@@ -27,6 +27,7 @@ class SettingsStore(context: Context) {
             shortsBlockedToday = preferences[Keys.ShortsBlockedToday] ?: 0,
             cooldownsTriggeredToday = preferences[Keys.CooldownsTriggeredToday] ?: 0,
             debugLogging = preferences[Keys.DebugLogging] ?: false,
+            currentSessionCount = preferences[Keys.CurrentSessionCount] ?: 0,
         )
     }
 
@@ -41,6 +42,7 @@ class SettingsStore(context: Context) {
             preferences[Keys.ShortsBlockedToday] = settings.shortsBlockedToday
             preferences[Keys.CooldownsTriggeredToday] = settings.cooldownsTriggeredToday
             preferences[Keys.DebugLogging] = settings.debugLogging
+            preferences[Keys.CurrentSessionCount] = settings.currentSessionCount
         }
     }
 
@@ -54,5 +56,6 @@ class SettingsStore(context: Context) {
         val ShortsBlockedToday = intPreferencesKey("shorts_blocked_today")
         val CooldownsTriggeredToday = intPreferencesKey("cooldowns_triggered_today")
         val DebugLogging = booleanPreferencesKey("debug_logging")
+        val CurrentSessionCount = intPreferencesKey("current_session_count")
     }
 }

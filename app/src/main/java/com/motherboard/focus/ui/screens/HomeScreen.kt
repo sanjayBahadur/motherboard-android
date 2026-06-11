@@ -24,6 +24,7 @@ fun HomeScreen(
     settings: InterventionSettings,
     isServiceEnabled: Boolean,
     detectionState: ShortsDetectionState,
+    sessionCount: Int,
     onToggleBlocking: (Boolean) -> Unit,
     onSessionLimitChange: (Int) -> Unit,
     onCooldownMinutesChange: (Int) -> Unit,
@@ -83,15 +84,21 @@ fun HomeScreen(
             }
         }
 
+        val severityColor = when {
+            sessionCount >= (settings.sessionLimit * 0.9).toInt() -> MaterialTheme.colorScheme.tertiary
+            sessionCount >= (settings.sessionLimit * 0.5).toInt() -> MaterialTheme.colorScheme.secondary
+            else -> MaterialTheme.colorScheme.primary
+        }
         DashboardCard {
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Text(
-                    text = "0 / ${settings.sessionLimit}",
+                    text = "$sessionCount / ${settings.sessionLimit}",
                     style = MaterialTheme.typography.displayLarge,
                     fontWeight = FontWeight.Bold,
+                    color = severityColor,
                 )
                 Text(
                     text = "Shorts this session",

@@ -106,9 +106,9 @@ class PhaseTwoContractTest {
     }
 
     @Test
-    fun `accessibility service config does NOT include typeViewScrolled`() {
+    fun `accessibility service config includes typeViewScrolled`() {
         val config = File("src/main/res/xml/accessibility_service_config.xml").readText()
-        assertFalse("typeViewScrolled must NOT be in Phase 2 config", config.contains("typeViewScrolled"))
+        assertTrue("typeViewScrolled must be present in Phase 3", config.contains("typeViewScrolled"))
     }
 
     // ── Service wiring ──

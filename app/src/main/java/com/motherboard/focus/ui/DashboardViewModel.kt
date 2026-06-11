@@ -14,6 +14,7 @@ import com.motherboard.focus.storage.SettingsStore
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -41,6 +42,14 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
             initialValue = ShortsDetectionState.NotYouTube,
         )
 
+    val sessionCount: StateFlow<Int> = store.settings
+        .map { it.currentSessionCount }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = 0,
+        )
+
     private val contentObserver = object : android.database.ContentObserver(Handler(Looper.getMainLooper())) {
         override fun onChange(selfChange: Boolean) {
             _isAccessibilityServiceEnabled.value = isAccessibilityServiceEnabled()
@@ -58,6 +67,8 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
         viewModelScope.launch {
             store.settings.collect { s ->
                 MotherboardAccessibilityService.debugLogging = s.debugLogging
+                MotherboardAccessibilityService.blockingEnabled = s.blockingEnabled
+                MotherboardAccessibilityService.eventDebounceMillis = s.eventDebounceMillis
             }
         }
     }

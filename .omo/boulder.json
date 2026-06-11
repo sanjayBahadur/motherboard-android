@@ -1,49 +1,43 @@
 {
-  "active_plan": "/home/tatakae/Projects/Motherboard/.omo/plans/phase-2.md",
-  "started_at": "2026-06-11T04:27:09.563Z",
-  "ended_at": "2026-06-11T04:36:00.000Z",
+  "active_plan": "/home/tatakae/Projects/Motherboard/.omo/plans/phase-3.md",
+  "started_at": "2026-06-11T05:00:00.000Z",
   "session_ids": [
-    "opencode:ses_14b2dab2affeKJlZyvwFpRejQC",
-    "opencode:ses_14b06c9fcffe7fYO1RT6AOI4mx",
-    "opencode:ses_14b06b7e3ffeEwaVNN6rwVKb7J",
-    "opencode:ses_14b018fa0ffe1bUSMgdgCEoMzP"
+    "opencode:ses_14b2dab2affeKJlZyvwFpRejQC"
   ],
-  "plan_name": "phase-2",
+  "plan_name": "phase-3",
   "worktree_path": null,
   "session_origins": {
-    "opencode:ses_14b2dab2affeKJlZyvwFpRejQC": "direct",
-    "opencode:ses_14b06c9fcffe7fYO1RT6AOI4mx": "appended",
-    "opencode:ses_14b06b7e3ffeEwaVNN6rwVKb7J": "appended",
-    "opencode:ses_14b018fa0ffe1bUSMgdgCEoMzP": "appended"
+    "opencode:ses_14b2dab2affeKJlZyvwFpRejQC": "direct"
   },
   "task_sessions": {},
   "schema_version": 2,
   "works": {
-    "phase-2": {
-      "work_id": "phase-2",
-      "active_plan": "/home/tatakae/Projects/Motherboard/.omo/plans/phase-2.md",
-      "plan_name": "phase-2",
-      "started_at": "2026-06-11T04:27:09.563Z",
-      "ended_at": "2026-06-11T04:36:00.000Z",
-      "updated_at": "2026-06-11T04:43:54.516Z",
+    "phase-3-legacy": {
+      "work_id": "phase-3-legacy",
+      "active_plan": "/home/tatakae/Projects/Motherboard/.omo/plans/phase-3.md",
+      "plan_name": "phase-3",
+      "started_at": "2026-06-11T05:00:00.000Z",
+      "updated_at": "2026-06-11T04:50:58.987Z",
       "session_ids": [
-        "opencode:ses_14b2dab2affeKJlZyvwFpRejQC",
-        "opencode:ses_14b06c9fcffe7fYO1RT6AOI4mx",
-        "opencode:ses_14b06b7e3ffeEwaVNN6rwVKb7J",
-        "opencode:ses_14b018fa0ffe1bUSMgdgCEoMzP"
+        "opencode:ses_14b2dab2affeKJlZyvwFpRejQC"
       ],
       "session_origins": {
-        "opencode:ses_14b2dab2affeKJlZyvwFpRejQC": "direct",
-        "opencode:ses_14b06c9fcffe7fYO1RT6AOI4mx": "appended",
-        "opencode:ses_14b06b7e3ffeEwaVNN6rwVKb7J": "appended",
-        "opencode:ses_14b018fa0ffe1bUSMgdgCEoMzP": "appended"
+        "opencode:ses_14b2dab2affeKJlZyvwFpRejQC": "direct"
       },
       "worktree_path": null,
-      "task_sessions": {},
-      "status": "completed"
+      "task_sessions": {
+        "todo:1": {
+          "task_key": "todo:1",
+          "task_label": "1",
+          "task_title": "Extend the existing `init` sync loop to push `blockingEnabled` and `eventDebounceMillis` to service companion (currently only syncs `debugLogging`)",
+          "session_id": "opencode:ses_14afb620affe2MD23QauzGJ2pR",
+          "agent": "Sisyphus-Junior",
+          "category": "quick",
+          "updated_at": "2026-06-11T04:50:58.987Z",
+          "started_at": "2026-06-11T04:50:58.987Z",
+          "status": "running"
+        }
+      }
     }
-  },
-  "active_work_id": "phase-2",
-  "updated_at": "2026-06-11T04:43:54.516Z",
-  "status": "completed"
+  }
 }
