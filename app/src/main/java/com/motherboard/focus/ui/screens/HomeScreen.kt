@@ -16,12 +16,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.motherboard.focus.service.ShortsDetectionState
 import com.motherboard.focus.storage.InterventionSettings
 
 @Composable
 fun HomeScreen(
     settings: InterventionSettings,
     isServiceEnabled: Boolean,
+    detectionState: ShortsDetectionState,
     onToggleBlocking: (Boolean) -> Unit,
     onSessionLimitChange: (Int) -> Unit,
     onCooldownMinutesChange: (Int) -> Unit,
@@ -59,6 +61,20 @@ fun HomeScreen(
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
+                    if (isServiceEnabled) {
+                        Text(
+                            when (detectionState) {
+                                ShortsDetectionState.YouTubeShorts -> "Watching YouTube Shorts: Yes"
+                                ShortsDetectionState.YouTubeNotShorts -> "Watching YouTube (not Shorts)"
+                                ShortsDetectionState.NotYouTube -> "Not watching Shorts"
+                            },
+                            style = MaterialTheme.typography.bodySmall,
+                            color = if (detectionState == ShortsDetectionState.YouTubeShorts)
+                                MaterialTheme.colorScheme.tertiary
+                            else
+                                MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
                 }
                 Switch(
                     checked = settings.blockingEnabled,

@@ -3,8 +3,7 @@
     android:description="@string/accessibility_service_description"
     android:accessibilityEventTypes="typeWindowStateChanged|typeWindowContentChanged"
     android:accessibilityFeedbackType="feedbackGeneric"
-    android:accessibilityFlags="flagDefault"
-    android:canRetrieveWindowContent="false"
+    android:accessibilityFlags="flagReportViewIds"
+    android:canRetrieveWindowContent="true"
     android:notificationTimeout="300"
-    android:packageNames="com.google.android.youtube"
     android:settingsActivity="com.motherboard.focus.MainActivity" />

@@ -7,6 +7,8 @@ import android.provider.Settings
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.motherboard.focus.service.MotherboardAccessibilityService
+import com.motherboard.focus.service.ShortsDetectionState
+import com.motherboard.focus.service.YouTubeShortsDetector
 import com.motherboard.focus.storage.InterventionSettings
 import com.motherboard.focus.storage.SettingsStore
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -30,6 +32,14 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
         isAccessibilityServiceEnabled()
     )
     val isAccessibilityServiceEnabled: StateFlow<Boolean> = _isAccessibilityServiceEnabled
+
+    /** Directly exposes the detector's companion StateFlow — all three ShortsDetectionState values */
+    val detectionState: StateFlow<ShortsDetectionState> = YouTubeShortsDetector.detectionState
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = ShortsDetectionState.NotYouTube,
+        )
 
     private val contentObserver = object : android.database.ContentObserver(Handler(Looper.getMainLooper())) {
         override fun onChange(selfChange: Boolean) {

@@ -22,10 +22,13 @@ class MotherboardAccessibilityService : AccessibilityService() {
             private set
     }
 
+    private val detector = YouTubeShortsDetector()
+
     override fun onServiceConnected() {
         super.onServiceConnected()
         instance = this
         isRunning.value = true
+        detector.reset(debugLogging)
         if (debugLogging) {
             Log.d(TAG, "onServiceConnected: service bound")
         }
@@ -33,13 +36,19 @@ class MotherboardAccessibilityService : AccessibilityService() {
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
         if (event == null) return
-        if (!debugLogging) return
 
-        val eventTypeName = event.eventType.eventTypeToString()
-        Log.d(
-            TAG,
-            "event: type=$eventTypeName pkg=${event.packageName} cls=${event.className} time=${event.eventTime}"
-        )
+        // Detection runs UNCONDITIONALLY — not gated behind debugLogging
+        detector.onAccessibilityEvent(event, this, debugLogging)
+
+        // Logging is conditional
+        if (debugLogging) {
+            val eventTypeName = event.eventType.eventTypeToString()
+            val state = YouTubeShortsDetector.detectionState.value
+            Log.d(
+                TAG,
+                "event: type=$eventTypeName pkg=${event.packageName} cls=${event.className} time=${event.eventTime} state=$state"
+            )
+        }
     }
 
     override fun onInterrupt() {
@@ -58,6 +67,7 @@ class MotherboardAccessibilityService : AccessibilityService() {
     override fun onDestroy() {
         instance = null
         isRunning.value = false
+        detector.reset(debugLogging)
         if (debugLogging) {
             Log.d(TAG, "onDestroy: service destroyed")
         }

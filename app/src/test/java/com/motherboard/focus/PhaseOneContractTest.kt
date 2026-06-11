@@ -52,11 +52,12 @@ class PhaseOneContractTest {
         val config = File("src/main/res/xml/accessibility_service_config.xml")
         assertTrue("accessibility_service_config.xml must exist", config.exists())
         val content = config.readText()
-        assertTrue("must filter for YouTube", content.contains("com.google.android.youtube"))
         assertTrue("must include typeWindowStateChanged", content.contains("typeWindowStateChanged"))
         assertTrue("must include typeWindowContentChanged", content.contains("typeWindowContentChanged"))
-        assertFalse("must NOT include typeViewScrolled in Phase 1", content.contains("typeViewScrolled"))
-        assertTrue("canRetrieveWindowContent must be false", content.contains("canRetrieveWindowContent=\"false\""))
+        assertFalse("must NOT include typeViewScrolled", content.contains("typeViewScrolled"))
+        assertTrue("canRetrieveWindowContent must be true in Phase 2", content.contains("canRetrieveWindowContent=\"true\""))
+        assertFalse("packageNames must be removed in Phase 2 for NotYouTube transitions",
+            content.contains("packageNames"))
     }
 
     @Test
